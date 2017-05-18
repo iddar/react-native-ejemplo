@@ -1,46 +1,40 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+
 import {
-  AppRegistry,
-  Text,
-  View
+  AppRegistry
 } from 'react-native'
-import { StackNavigator } from 'react-navigation'
 
-import Header from './components/Header'
-import Count from './components/Count'
-import List from './components/List'
+import { Provider } from 'react-redux'
+import configureStore from './store'
 
-class HomeScreen extends Component {
-  constructor (props) {
-    super(props)
+import { addNavigationHelpers } from 'react-navigation'
 
-    this.state = {
-      user: {
-        name: 'Iddar olivares',
-        job: 'Nijan'
-      },
-      repos: 12,
-      stars: 32
-    }
-  }
+const store = configureStore()
 
+import AppNavigator from './ruter'
+
+class App extends Component {
   render () {
     return (
-      <View style={{flex: 1}}>
-        <Header user={this.state.user} />
-        <Count repos={this.state.repos} stars={this.state.stars} />
-        <List />
-      </View>
+      <AppNavigator navigation={addNavigationHelpers({
+        dispatch: this.props.dispatch,
+        state: this.props.nav
+      })} />
     )
   }
 }
 
-HomeScreen.navigationOptions = {
-  title: 'Welcome'
-}
-
-const SimpleApp = StackNavigator({
-  Home: { screen: HomeScreen }
+const mapStateToProps = (state) => ({
+  nav: state.nav
 })
+
+const AppWithNavigationState = connect(mapStateToProps)(App)
+
+const SimpleApp = () => (
+  <Provider store={store}>
+    <AppWithNavigationState />
+  </Provider>
+)
 
 AppRegistry.registerComponent('SimpleApp', () => SimpleApp)

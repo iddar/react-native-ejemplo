@@ -7,28 +7,11 @@ import {
 } from 'react-native'
 
 export default class HomeScreen extends Component {
-  constructor (props) {
-      super(props)
-      this.state = {
-        repos: []
-      }
-  }
-
-  componentDidMount () {
-    fetch('https://api.github.com/users/iddar/repos')
-      .then(r => r.json())
-      .then(r => {
-        let a = r.map(e => e.name)
-        this.setState({
-          repos: a
-        })
-      })
-  }
   render () {
-    let { repos } = this.state
+    let { repos } = this.props
     return (
       <ScrollView style={styles.container}>
-        <Text style={styles.title}>Repos</Text>
+        {/* <Text style={styles.title}>Repos</Text> */}
         {repos.map((repo, key) => (
           <View key={key} style={styles.item}>
             <View style={styles.circle}></View>

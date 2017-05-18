@@ -12,7 +12,9 @@ export default class Header extends Component {
       <View style={styles.container}>
         <Image source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}} style={styles.img} />
         <View style={styles.box}>
-          <Text style={styles.title}>{this.props.user.name}</Text>
+          <Text
+            onPress={() => this.props.navigate('Todo')}
+            style={styles.title}>{this.props.user.name}</Text>
           <Text style={styles.text}>{this.props.user.job}</Text>
         </View>
       </View>
