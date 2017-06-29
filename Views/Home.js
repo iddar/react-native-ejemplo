@@ -8,9 +8,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as githubActions from '../actions/github'
 
-import Header from '../components/Header'
-// import Count from './components/Count'
-import List from '../components/List'
+import Bt from '../components/Bt'
 
 class HomeScreen extends Component {
   constructor (props) {
@@ -27,21 +25,11 @@ class HomeScreen extends Component {
   }
 
   render () {
-    // const { navigate } = this.props.navigation
-    // const { actions } = this.props
-    const navigate = () => null
+    const { navigate } = this.props.navigation
     return (
-      <View style={{flex: 1}}>
-        <Header user={this.state.user} navigate={navigate} />
-        <Text onPress={() => this.props.navigation.navigate('Color', {name: 'Red', color: '#FF0000'})}>
-          Red
-        </Text>
-        <Text onPress={() => this.props.navigation.navigate('Color', {name: 'Green', color: '#00FF00'})}>
-          Green
-        </Text>
-        <Text onPress={() => this.props.navigation.navigate('Color', {name: 'Blue', color: '#0000FF'})}>
-          Blue
-        </Text>
+      <View style={{flex: 1, paddingBottom: 20}}>
+        <Bt title='Animated' to={() => navigate('Animated')} />
+        <Bt title='LayoutAnimation' to={() => navigate('LayoutAnimation')} />
       </View>
     )
   }

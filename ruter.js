@@ -1,11 +1,11 @@
 import { StackNavigator } from 'react-navigation'
 
 import Home from './Views/Home'
-import Todo from './Views/Todo'
-import Color from './Views/Color'
+import LayoutAnimation from './Views/LayoutAnimation'
+import Animated from './Views/Animated'
 
 export default StackNavigator({
   Home: { screen: Home },
-  Color: { screen: Color },
-  Todo: { screen: Todo }
+  LayoutAnimation: { screen: LayoutAnimation },
+  Animated: { screen: Animated }
 })
