@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import { connect, Provider } from 'react-redux'
+import { addNavigationHelpers } from 'react-navigation'
 
 import {
   AppRegistry
 } from 'react-native'
 
-import { Provider } from 'react-redux'
 import configureStore from './store'
 
-import { addNavigationHelpers } from 'react-navigation'
 
 const store = configureStore()
 
