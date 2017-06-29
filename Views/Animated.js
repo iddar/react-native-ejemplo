@@ -37,7 +37,7 @@ export default class AnimationExample extends Component {
   onPress (index) {
     // Uncomment to animate the next state change.
     // [easeInEaseOut, linear, spring]
-    LayoutAnimation.configureNext(CustomLayoutAnimation)
+    LayoutAnimation.configureNext(LayoutAnimation.Presets.spring)
 
     // Or use a Custom Layout Animation
     // LayoutAnimation.configureNext(CustomLayoutAnimation);

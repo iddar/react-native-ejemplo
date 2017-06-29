@@ -54,9 +54,9 @@ export default class App extends Component {
   render () {
     return (
       <View style={{flex: 1}}>
-        {[1, 2, 3, 4, 5].map((pos) => (
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((pos) => (
           <FadeInView key={pos} pos={pos} style={{flex: 1, backgroundColor: 'powderblue', margin: 5, justifyContent: 'center'}}>
-            <Text style={{fontSize: 28, textAlign: 'center', margin: 10}}>Fading in</Text>
+            <Text style={{fontSize: 28, textAlign: 'center', margin: 10}}>Animation</Text>
           </FadeInView>
         ))}
       </View>

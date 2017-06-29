@@ -30,6 +30,7 @@ class HomeScreen extends Component {
       <View style={{flex: 1, paddingBottom: 20}}>
         <Bt title='Animated' to={() => navigate('Animated')} />
         <Bt title='LayoutAnimation' to={() => navigate('LayoutAnimation')} />
+        <Bt title='Shop' to={() => navigate('Shop')} />
       </View>
     )
   }
