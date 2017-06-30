@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux'
-import github from './github'
-import gifs from './gifs'
+import user from './user'
 
 import AppNavigator from '../ruter'
 
@@ -17,8 +16,7 @@ const navReducer = (state = initialState, action) => {
 
 const rootReducer = combineReducers({
   nav: navReducer,
-  github: github,
-  gifs: gifs
+  user: user
 })
 
 export default rootReducer
