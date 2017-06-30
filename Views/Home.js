@@ -7,6 +7,7 @@ import {
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as githubActions from '../actions/github'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 import Bt from '../components/Bt'
 
@@ -28,6 +29,7 @@ class HomeScreen extends Component {
     const { navigate } = this.props.navigation
     return (
       <View style={{flex: 1, paddingBottom: 20}}>
+        <Icon name="ios-person" size={30} color="#4F8EF7" />
         <Bt title='Animated' to={() => navigate('Animated')} />
         <Bt title='LayoutAnimation' to={() => navigate('LayoutAnimation')} />
         <Bt title='Shop' to={() => navigate('Shop')} />

@@ -8,6 +8,11 @@ import Shop from './Views/Shop'
 export default StackNavigator({
   Home: { screen: Home },
   LayoutAnimation: { screen: LayoutAnimation },
-  Shop: { screen: Shop },
+  Shop: {
+    screen: Shop,
+    navigationOptions: ({navigation}) => ({
+      header: null
+    })
+  },
   Animated: { screen: Animated }
 })

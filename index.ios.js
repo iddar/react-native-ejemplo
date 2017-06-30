@@ -16,7 +16,8 @@ import AppNavigator from './ruter'
 class App extends Component {
   render () {
     return (
-      <AppNavigator navigation={addNavigationHelpers({
+      <AppNavigator
+        navigation={addNavigationHelpers({
         dispatch: this.props.dispatch,
         state: this.props.nav
       })} />

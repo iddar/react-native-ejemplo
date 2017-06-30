@@ -7,14 +7,14 @@ class FadeInView extends Component {
     super(props)
 
     this.state = {
-      fadeAnim: new Animated.Value(-400)  // Initial value for opacity: 0
+      position: new Animated.Value(-400)  // Initial value for opacity: 0
     }
   }
 
   componentDidMount () {
     setTimeout(() => {
-      Animated.spring(                  // Animate over time
-        this.state.fadeAnim,            // The animated value to drive
+        Animated.spring(                  // Animate over time
+        this.state.position,            // The animated value to drive
         {
           toValue: 0,                   // Animate to opacity: 1 (opaque)
           duration: 4000              // Make it take a while
@@ -25,7 +25,7 @@ class FadeInView extends Component {
 
   componentWillUnmount () {
     Animated.spring(                  // Animate over time
-      this.state.fadeAnim,            // The animated value to drive
+      this.state.position,            // The animated value to drive
       {
         toValue: 2000,                   // Animate to opacity: 1 (opaque)
         duration: 1              // Make it take a while
@@ -34,13 +34,13 @@ class FadeInView extends Component {
   }
 
   render () {
-    let { fadeAnim } = this.state
+    let { position } = this.state
 
     return (
       <Animated.View                 // Special animatable View
         style={[
           this.props.style,
-          {left: fadeAnim}       // Bind opacity to animated value
+          {left: position}       // Bind opacity to animated value
         ]}
       >
         {this.props.children}
