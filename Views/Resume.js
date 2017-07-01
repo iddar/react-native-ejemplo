@@ -22,35 +22,32 @@ const {height, width} = Dimensions.get('window')
 
 class HomeScreen extends Component {
   componentWillMount () {
-    let { actions } = this.props
-    actions.getItems()
+    let { cart, actions } = this.props
+    actions.getResume(this.parseCart(cart))
   }
 
   parseCart (cart) {
-    let totalCount = Object.keys(cart).reduce((reduce, el) => {
-      return reduce + cart[el].count
-    }, 0)
+    let cartArray = Object.keys(cart).map((el) => {
+      return {
+        [el]: cart[el]
+      }
+    })
 
-    return totalCount
+    return cartArray
   }
 
   render () {
-    let { navigate } = this.props.navigation
-    let { list, cart, actions } = this.props
+    let { resume } = this.props
     return (
       <Image style={styles.bg} source={require('../assets/free_space.png')} resizeMode={'cover'}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}> Tiene {this.parseCart(cart)} en su carrito</Text>
-          <Text onPress={() => navigate('Resume')} style={styles.headerTextBold}> Pagar</Text>
-        </View>
         <ScrollView>
-          {list.map(el => {
+          {resume.map(el => {
             return (
               <Product
                 info={el}
                 key={el.id}
                 actions={actions}
-                count={el.id in cart ? cart[el.id].count : 0} />
+                count={el.count || 0} />
             )
           })}
         </ScrollView>
@@ -100,8 +97,8 @@ function mapDispatchToProps (dispatch) {
 
 function mapStateToProps (store) {
   return {
-    list: store.items,
-    cart: store.cart
+    cart: store.cart,
+    resume: store.resume
   }
 }
 

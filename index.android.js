@@ -1,53 +1,44 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
+import React, { Component } from 'react'
+import { connect, Provider } from 'react-redux'
+import { addNavigationHelpers } from 'react-navigation'
 
-import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
-  Text,
-  View
-} from 'react-native';
+  View,
+  StatusBar
+} from 'react-native'
 
-export default class SimpleApp extends Component {
-  render() {
+import configureStore from './store'
+
+const store = configureStore()
+
+import AppNavigator from './ruter'
+
+class App extends Component {
+  render () {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+      <View style={{flex: 1}}>
+        <StatusBar barStyle='light-content' />
+        <AppNavigator
+          navigation={addNavigationHelpers({
+            dispatch: this.props.dispatch,
+            state: this.props.nav
+          })} />
       </View>
-    );
+    )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+const mapStateToProps = (state) => ({
+  nav: state.nav
+})
 
-AppRegistry.registerComponent('SimpleApp', () => SimpleApp);
+const AppWithNavigationState = connect(mapStateToProps)(App)
+
+const SimpleApp = () => (
+  <Provider store={store}>
+    <AppWithNavigationState />
+  </Provider>
+)
+
+AppRegistry.registerComponent('SimpleApp', () => SimpleApp)

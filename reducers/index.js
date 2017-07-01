@@ -1,5 +1,8 @@
 import { combineReducers } from 'redux'
 import user from './user'
+import items from './items'
+import cart from './cart'
+import resume from './resume'
 
 import AppNavigator from '../ruter'
 
@@ -16,7 +19,10 @@ const navReducer = (state = initialState, action) => {
 
 const rootReducer = combineReducers({
   nav: navReducer,
-  user: user
+  user,
+  items,
+  cart,
+  resume
 })
 
 export default rootReducer

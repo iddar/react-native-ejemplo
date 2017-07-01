@@ -14,3 +14,27 @@ export const login = (user, password) => dispatch => {
       dispatch({type: 'resolveLogin', payload: user})
     })
 }
+
+export const getItems = () => dispatch => {
+  fake.list()
+    .then(list => {
+      dispatch({type: 'list', payload: list})
+    })
+}
+
+export const getResume = (resume) => dispatch => {
+  fake.ticket(resume)
+    .then(list => {
+      dispatch({type: 'resume', payload: list})
+    }).catch(() => {
+      console.warn('fails')
+    })
+}
+
+export const addITem = (id) => dispatch => {
+  dispatch({type: 'add item', payload: id})
+}
+
+export const removeItem = (id) => dispatch => {
+  dispatch({type: 'remove remove', payload: id})
+}

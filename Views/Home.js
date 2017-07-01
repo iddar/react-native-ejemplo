@@ -12,8 +12,6 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as apiActions from '../actions/api'
 
-// import Icon from 'react-native-vector-icons/Ionicons'
-// import Bt from '../components/Bt'
 const {height, width} = Dimensions.get('window')
 
 class HomeScreen extends Component {

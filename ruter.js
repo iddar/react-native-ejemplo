@@ -2,6 +2,7 @@ import { StackNavigator } from 'react-navigation'
 
 import Home from './Views/Home'
 import Shop from './Views/Shop'
+import Resume from './Views/Resume'
 
 export default StackNavigator({
   Home: {
@@ -10,5 +11,6 @@ export default StackNavigator({
       header: null
     })
   },
-  Shop: {screen: Shop}
+  Shop: {screen: Shop},
+  Resume: {screen: Resume}
 })
